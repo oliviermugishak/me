@@ -93,6 +93,7 @@ export const projects: Project[] = [
     ],
     techStack: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "Radix UI"],
     githubUrl: "https://github.com/fireboykm00/dbi.rw",
+    demoUrl: "https://dbi-rw.onrender.com/",
     featured: true,
   },
 ];
