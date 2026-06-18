@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { motion } from "framer-motion";
-import { PaperPlaneTilt, Check, WhatsappLogo } from "@phosphor-icons/react";
+import { PaperPlaneTilt, WhatsappLogo, Spinner } from "@phosphor-icons/react";
+import { toast } from "sonner";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
 import { Button } from "@/components/ui/button";
@@ -10,10 +11,13 @@ import { fadeInUp, staggerContainer } from "@/styles/animations";
 import { siteConfig } from "@/config/site";
 
 function Contact() {
-  const [state, setState] = useState<"idle" | "sent">("idle");
+  const [submitting, setSubmitting] = useState(false);
+  const formRef = useRef<HTMLFormElement>(null);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setSubmitting(true);
+
     const form = e.currentTarget;
     const data = new FormData(form);
 
@@ -28,12 +32,24 @@ function Contact() {
         }),
       });
 
+      const json = await res.json();
+
       if (res.ok) {
-        setState("sent");
+        toast.success("Message sent!", {
+          description: "I'll get back to you within 24 hours.",
+        });
         form.reset();
+      } else {
+        toast.error("Something went wrong.", {
+          description: json.error || "Please try again later.",
+        });
       }
     } catch {
-      // silently fail
+      toast.error("Network error.", {
+        description: "Could not reach the server. Check your connection.",
+      });
+    } finally {
+      setSubmitting(false);
     }
   };
 
@@ -130,87 +146,77 @@ function Contact() {
           </motion.div>
 
           <motion.div variants={fadeInUp}>
-            {state === "sent" ? (
-              <div className="rounded-xl border border-emerald-500/30 bg-emerald-500/5 p-8 text-center">
-                <Check
-                  size={32}
-                  className="text-emerald-500 mx-auto mb-4"
-                  weight="duotone"
-                />
-                <h3 className="text-lg font-display font-semibold mb-2">
-                  Message sent
-                </h3>
-                <p className="text-sm text-text-muted">
-                  Thanks for reaching out. I&apos;ll respond within 24 hours.
-                </p>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  className="mt-4"
-                  onClick={() => setState("idle")}
+            <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
+              <div>
+                <label
+                  htmlFor="name"
+                  className="block text-sm font-medium text-text-muted mb-1"
                 >
-                  Send another
-                </Button>
+                  Name
+                </label>
+                <input
+                  id="name"
+                  name="name"
+                  type="text"
+                  required
+                  disabled={submitting}
+                  className="w-full rounded-lg border border-border-primary bg-bg-surface px-4 py-2.5 text-sm text-text-primary placeholder:text-text-muted focus:outline-none focus:border-accent transition-colors disabled:opacity-50"
+                  placeholder="Your name"
+                />
               </div>
-            ) : (
-              <form
-                onSubmit={handleSubmit}
-                className="space-y-4"
+              <div>
+                <label
+                  htmlFor="email"
+                  className="block text-sm font-medium text-text-muted mb-1"
+                >
+                  Email
+                </label>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  required
+                  disabled={submitting}
+                  className="w-full rounded-lg border border-border-primary bg-bg-surface px-4 py-2.5 text-sm text-text-primary placeholder:text-text-muted focus:outline-none focus:border-accent transition-colors disabled:opacity-50"
+                  placeholder="you@example.com"
+                />
+              </div>
+              <div>
+                <label
+                  htmlFor="message"
+                  className="block text-sm font-medium text-text-muted mb-1"
+                >
+                  Message
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  required
+                  rows={5}
+                  disabled={submitting}
+                  className="w-full rounded-lg border border-border-primary bg-bg-surface px-4 py-2.5 text-sm text-text-primary placeholder:text-text-muted focus:outline-none focus:border-accent transition-colors resize-none disabled:opacity-50"
+                  placeholder="Tell me about your project or opportunity..."
+                />
+              </div>
+              <Button
+                type="submit"
+                size="lg"
+                className="w-full"
+                disabled={submitting}
               >
-                <div>
-                  <label
-                    htmlFor="name"
-                    className="block text-sm font-medium text-text-muted mb-1"
-                  >
-                    Name
-                  </label>
-                  <input
-                    id="name"
-                    name="name"
-                    type="text"
-                    required
-                    className="w-full rounded-lg border border-border-primary bg-bg-surface px-4 py-2.5 text-sm text-text-primary placeholder:text-text-muted focus:outline-none focus:border-accent transition-colors"
-                    placeholder="Your name"
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="email"
-                    className="block text-sm font-medium text-text-muted mb-1"
-                  >
-                    Email
-                  </label>
-                  <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    required
-                    className="w-full rounded-lg border border-border-primary bg-bg-surface px-4 py-2.5 text-sm text-text-primary placeholder:text-text-muted focus:outline-none focus:border-accent transition-colors"
-                    placeholder="you@example.com"
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="message"
-                    className="block text-sm font-medium text-text-muted mb-1"
-                  >
-                    Message
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    required
-                    rows={5}
-                    className="w-full rounded-lg border border-border-primary bg-bg-surface px-4 py-2.5 text-sm text-text-primary placeholder:text-text-muted focus:outline-none focus:border-accent transition-colors resize-none"
-                    placeholder="Tell me about your project or opportunity..."
-                  />
-                </div>
-                <Button type="submit" size="lg" className="w-full">
-                  <PaperPlaneTilt size={16} weight="bold" />
-                  Send Message
-                </Button>
-              </form>
-            )}
+                {submitting ? (
+                  <>
+                    <Spinner size={16} className="animate-spin" />
+                    Sending...
+                  </>
+                ) : (
+                  <>
+                    <PaperPlaneTilt size={16} weight="bold" />
+                    Send Message
+                  </>
+                )}
+              </Button>
+            </form>
           </motion.div>
         </motion.div>
       </Container>
