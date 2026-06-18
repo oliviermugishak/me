@@ -1,5 +1,5 @@
 export const siteConfig = {
-  name: "Olivier Kwizera",
+  name: "Olivier Mugisha K",
   fullName: "KWIZERA MUGISHA OLIVIER",
   title: "Software Development Student",
   description:
