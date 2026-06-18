@@ -48,6 +48,13 @@ export async function POST(request: Request) {
     );
   }
 
+  if (!resend) {
+    return NextResponse.json(
+      { error: "Contact form is not configured." },
+      { status: 500 }
+    );
+  }
+
   let body: unknown;
   try {
     body = await request.json();
@@ -66,30 +73,24 @@ export async function POST(request: Request) {
 
   const { name, email, message } = parsed.data;
 
-  if (resend) {
-    try {
-      await resend.emails.send({
-        from: "Portfolio Contact <onboarding@resend.dev>",
-        to: "kwizeramugishaolivier0@gmail.com",
-        replyTo: email,
-        subject: `New message from ${name}`,
-        text: [
-          `Name: ${name}`,
-          `Email: ${email}`,
-          ``,
-          `Message:`,
-          message,
-        ].join("\n"),
-      });
-    } catch {
-      return NextResponse.json(
-        { error: "Failed to send message. Please try again later." },
-        { status: 500 }
-      );
-    }
-  } else {
-    console.log(
-      `[Contact] From: ${name} <${email}>\nMessage: ${message}`
+  try {
+    await resend.emails.send({
+      from: "Portfolio Contact <onboarding@resend.dev>",
+      to: "kwizeramugishaolivier0@gmail.com",
+      replyTo: email,
+      subject: `New message from ${name}`,
+      text: [
+        `Name: ${name}`,
+        `Email: ${email}`,
+        ``,
+        `Message:`,
+        message,
+      ].join("\n"),
+    });
+  } catch {
+    return NextResponse.json(
+      { error: "Failed to send message. Please try again later." },
+      { status: 500 }
     );
   }
 
