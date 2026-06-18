@@ -2,52 +2,31 @@ import type { TimelineEvent } from "@/types";
 
 export const timeline: TimelineEvent[] = [
   {
-    year: "2019",
-    title: "Started Programming",
-    description:
-      "Began with Python and JavaScript. Built first CLI tools and web scrapers.",
-    type: "milestone",
-  },
-  {
-    year: "2020",
-    title: "Full-Stack Development",
-    description:
-      "Built complete web applications with React, Node.js, and PostgreSQL. Started freelancing.",
-    type: "achievement",
-  },
-  {
-    year: "2021",
-    title: "Backend Engineering",
-    description:
-      "Deep dive into Go, distributed systems, and cloud infrastructure. Built production APIs.",
-    type: "milestone",
-  },
-  {
-    year: "2022",
-    title: "Framework Development",
-    description:
-      "Started Gonito framework. Explored Rust for systems programming. Contributed to open source.",
-    type: "achievement",
-  },
-  {
     year: "2023",
-    title: "Systems Design",
+    title: "Started Learning Software Development",
     description:
-      "Architected microservices platforms. Built GURA marketplace. Mentored junior engineers.",
+      "Began studying Software Development at Lycee De Kicukiro APADE. Started with Java, JavaScript, and web fundamentals.",
     type: "milestone",
   },
   {
     year: "2024",
-    title: "Open Source & Tooling",
+    title: "Building Projects",
     description:
-      "Published OpenCode. Grew Gonito adoption. Speaking at local tech events.",
+      "Built full-stack applications with React, Node.js, and MongoDB. Explored Spring Boot and REST APIs. Started freelancing.",
     type: "achievement",
   },
   {
     year: "2025",
-    title: "Building the Future",
+    title: "Deepening Backend Skills",
     description:
-      "Building globally impactful software companies. Focus on developer tooling and platform engineering.",
+      "Working on larger systems, participating in hackathons, and expanding into Docker, DevOps, and system design.",
     type: "milestone",
+  },
+  {
+    year: "Present",
+    title: "Still Building, Still Learning",
+    description:
+      "Continuing to build projects, learn distributed systems, and work toward building impactful software.",
+    type: "achievement",
   },
 ];

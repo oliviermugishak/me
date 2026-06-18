@@ -21,14 +21,6 @@ function Footer() {
               GitHub
             </a>
             <a
-              href={siteConfig.links.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm text-text-muted hover:text-text-primary transition-colors"
-            >
-              LinkedIn
-            </a>
-            <a
               href={`mailto:${siteConfig.email}`}
               className="text-sm text-text-muted hover:text-text-primary transition-colors"
             >

@@ -1,10 +1,10 @@
 # Olivier Kwizera — Portfolio
 
-This is my personal portfolio site. I built it to showcase the systems, tools, and products I work on.
+This is my personal portfolio site. I built it to showcase the projects I work on and my journey learning software development.
 
 I'll keep improving it over time — adding projects, refining the design, and experimenting with new things.
 
-Feel free to look through the code, take inspiration, or use it as a starting point for your own site if it fits what you need.
+Feel free to look through the code, take inspiration, or use it as a starting point for your own site.
 
 ## Stack
 
@@ -14,19 +14,19 @@ Feel free to look through the code, take inspiration, or use it as a starting po
 - **Animations:** Framer Motion
 - **Icons:** Phosphor React
 - **UI:** Custom design system with class-variance-authority
-- **Email:** Resend
+- **Email:** kwizeramugishaolivier0@gmail.com
 - **Analytics:** Vercel Analytics
 - **Deployment:** Vercel
 
 ## Sections
 
 - Hero — headline, tagline, CTAs
-- About — my engineering story and focus areas
-- Projects — detailed case studies on Gonito, GURA, and OpenCode
+- About — my learning journey and focus areas
+- Projects — case studies on the apps I've built
 - Philosophy — the principles I build by
 - Tech Stack — categorized grid of languages and tools
-- Timeline — my engineering journey so far
-- Contact — form with server-side validation and rate limiting
+- Timeline — my journey from 2023 to now
+- Contact — form with WhatsApp, email, and rate-limited API
 
 ## Run it
 

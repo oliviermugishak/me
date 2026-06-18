@@ -29,7 +29,7 @@ export const projects: Project[] = [
       "Used in 3 production services",
     ],
     techStack: ["Go", "OpenTelemetry", "Docker", "PostgreSQL"],
-    githubUrl: "https://github.com/olivier/gonito",
+    githubUrl: "https://github.com/oliviermugishak/gonito",
     featured: true,
   },
   {
@@ -67,7 +67,7 @@ export const projects: Project[] = [
       "Redis",
       "Docker",
     ],
-    githubUrl: "https://github.com/olivier/gura",
+    githubUrl: "https://github.com/oliviermugishak/gura",
     demoUrl: "https://gura.rw",
     featured: true,
   },
@@ -99,7 +99,7 @@ export const projects: Project[] = [
       "Featured in several developer newsletters",
     ],
     techStack: ["Rust", "TypeScript", "Docker", "GitHub Actions"],
-    githubUrl: "https://github.com/olivier/opencode",
+    githubUrl: "https://github.com/oliviermugishak/opencode",
     featured: true,
   },
 ];

@@ -5,6 +5,7 @@ import { ArrowRight, GithubLogo, Envelope } from "@phosphor-icons/react";
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
 import { fadeInUp, staggerContainer } from "@/styles/animations";
+import { siteConfig } from "@/config/site";
 
 function Hero() {
   return (
@@ -70,7 +71,7 @@ function Hero() {
             </Button>
             <Button variant="secondary" size="lg" asChild>
               <a
-                href="https://github.com/olivier"
+                href={siteConfig.links.github}
                 target="_blank"
                 rel="noopener noreferrer"
               >

@@ -1,15 +1,15 @@
 export const siteConfig = {
   name: "Olivier Kwizera",
-  title: "Software Engineer",
+  fullName: "KWIZERA MUGISHA OLIVIER",
+  title: "Software Development Student",
   description:
-    "Building scalable systems, backend platforms, and developer tools.",
+    "Building practical projects, learning backend systems, and growing as a developer.",
   url: "https://olivierkwizera.dev",
   location: "Kigali, Rwanda",
-  email: "hello@olivierkwizera.dev",
+  email: "kwizeramugishaolivier0@gmail.com",
+  phone: "+250 796 003 228",
   links: {
-    github: "https://github.com/olivier",
-    linkedin: "https://linkedin.com/in/olivier",
-    twitter: "https://twitter.com/olivier",
+    github: "https://github.com/oliviermugishak",
   },
   resumeUrl: "/resume.pdf",
 } as const;

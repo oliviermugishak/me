@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { PaperPlaneTilt, Check } from "@phosphor-icons/react";
+import { PaperPlaneTilt, Check, WhatsappLogo } from "@phosphor-icons/react";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
 import { Button } from "@/components/ui/button";
@@ -33,7 +33,7 @@ function Contact() {
         form.reset();
       }
     } catch {
-      // silently fail, show a message
+      // silently fail
     }
   };
 
@@ -63,8 +63,7 @@ function Contact() {
             variants={fadeInUp}
             className="text-text-muted mt-3 max-w-lg"
           >
-            Have a project, opportunity, or just want to talk systems?
-            Reach out.
+            Have a project, opportunity, or just want to connect? Reach out.
           </motion.p>
         </motion.div>
 
@@ -91,6 +90,21 @@ function Contact() {
                   </a>
                 </div>
                 <div>
+                  <span className="text-xs text-text-muted block">Phone</span>
+                  <a
+                    href={`https://wa.me/${siteConfig.phone.replace(/[^0-9]/g, "")}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm text-text-primary hover:text-accent transition-colors inline-flex items-center gap-2"
+                  >
+                    <WhatsappLogo size={16} weight="fill" />
+                    {siteConfig.phone}
+                    <span className="text-xs text-text-muted">
+                      (WhatsApp)
+                    </span>
+                  </a>
+                </div>
+                <div>
                   <span className="text-xs text-text-muted block">
                     Location
                   </span>
@@ -108,14 +122,6 @@ function Contact() {
                       className="text-sm text-text-primary hover:text-accent transition-colors"
                     >
                       GitHub
-                    </a>
-                    <a
-                      href={siteConfig.links.linkedin}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-sm text-text-primary hover:text-accent transition-colors"
-                    >
-                      LinkedIn
                     </a>
                   </div>
                 </div>
