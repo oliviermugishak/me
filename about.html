@@ -1,8 +1,8 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-page="about">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#f7f6f1" />
     <meta name="description" content="Learn about Olivier Mugisha Kwizera's freelance software engineering work in Kigali and his focus on backend systems, APIs, and infrastructure." />
     <meta property="og:type" content="website" />
@@ -17,62 +17,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
-    <a class="skip-link" href="#main">Skip to content</a>
-    <header class="site-header">
-      <div class="header-inner">
-        <a class="brand" href="/" aria-label="Olivier Mugisha Kwizera, home"><span>OMK</span><span class="brand-period">.</span></a>
-        <nav aria-label="Main navigation">
-          <a href="/">Home</a>
-          <a href="/about.html" aria-current="page">About</a>
-          <a href="/resume.html">Resume</a>
-        </nav>
-      </div>
-    </header>
-
-    <main id="main" class="page-shell inner-page">
-      <div class="inner-heading">
-        <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span> A little about me <span class="eyebrow-divider">/</span> 02</p>
-        <h1>About<span class="name-period">.</span></h1>
-        <p class="inner-deck">Software engineer based in Kigali, Rwanda.</p>
-      </div>
-
-      <div class="about-layout">
-        <div class="about-copy">
-          <p class="about-lead">I’m a freelance software engineer working with individuals and businesses in Kigali. Since 2023, I’ve built backend and full-stack applications for client work and personal products.</p>
-          <p>My work includes API design, access control, relational databases, and the Linux, container, and CI workflows used to run and maintain software. I’m looking for an early-career engineering role focused on backend, data, or infrastructure work.</p>
-          <p>Alongside freelance work, I’m the author of <a href="https://github.com/oliviermugishak/phantom" target="_blank" rel="noopener noreferrer">Phantom</a>, an open-source Rust/Linux utility for mapping keyboard and mouse input to Android touch events in Waydroid. It connects Linux input capture and profile-based controls to an Android-side event injector.</p>
-          <p>I’m interested in the engineering behind software: clear APIs, reliable access rules, data that stays structured, and systems that connect across operating environments.</p>
-          <div class="about-actions">
-            <a class="button-link" href="/resume.html">Read my resume <span aria-hidden="true">↗</span></a>
-            <a class="underlined-link" href="mailto:kwizeramugishaolivier0@gmail.com">Get in touch</a>
-          </div>
-        </div>
-        <aside class="about-aside" aria-label="Profile">
-          <div class="aside-note">
-            <span class="aside-label">01 / Location</span>
-            <p>Kigali<br />Rwanda</p>
-          </div>
-          <div class="aside-note">
-            <span class="aside-label">02 / Work</span>
-            <p>Freelance software engineering<br />2023–present</p>
-          </div>
-          <div class="aside-note">
-            <span class="aside-label">03 / Links</span>
-            <p><a href="https://github.com/oliviermugishak" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a><br /><a href="mailto:kwizeramugishaolivier0@gmail.com">Email <span aria-hidden="true">↗</span></a></p>
-          </div>
-        </aside>
-      </div>
-    </main>
-
-    <footer class="site-footer page-shell">
-      <span>Olivier Mugisha Kwizera <span class="brand-period">·</span> Kigali, Rwanda</span>
-      <div class="footer-links">
-        <a href="https://github.com/oliviermugishak" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
-        <a href="mailto:kwizeramugishaolivier0@gmail.com">Email <span aria-hidden="true">↗</span></a>
-      </div>
-    </footer>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

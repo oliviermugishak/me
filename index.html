@@ -1,8 +1,8 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-page="home">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#f7f6f1" />
     <meta name="description" content="Olivier Mugisha Kwizera is a freelance software engineer in Kigali focused on backend systems, APIs, and infrastructure." />
     <meta property="og:type" content="website" />
@@ -17,125 +17,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
-    <a class="skip-link" href="#main">Skip to content</a>
-    <header class="site-header">
-      <div class="header-inner">
-        <a class="brand" href="/" aria-label="Olivier Mugisha Kwizera, home">
-          <span>OMK</span><span class="brand-period">.</span>
-        </a>
-        <nav aria-label="Main navigation">
-          <a href="/" aria-current="page">Home</a>
-          <a href="/about.html">About</a>
-          <a href="/resume.html">Resume</a>
-        </nav>
-      </div>
-    </header>
-
-    <main id="main">
-      <section class="home-hero page-shell" aria-labelledby="hero-title">
-        <div class="hero-main">
-          <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span> Software Engineer <span class="eyebrow-divider">/</span> Kigali, Rwanda</p>
-          <h1 id="hero-title" class="hero-name"><span>Olivier</span><span>Mugisha</span><span class="name-accent">Kwizera<span class="name-period">.</span></span></h1>
-          <p class="hero-role">Backend systems, APIs &amp; infrastructure.</p>
-          <p class="hero-intro">I freelance in Kigali, building backend and full-stack applications for client work and personal products. My work spans API design, access control, relational databases, Linux, containers, and deployment workflows.</p>
-          <div class="hero-actions">
-            <a class="button-link" href="/resume.html">Read my resume <span aria-hidden="true">↗</span></a>
-            <a class="underlined-link" href="mailto:kwizeramugishaolivier0@gmail.com">Email me</a>
-          </div>
-        </div>
-        <aside class="hero-aside" aria-label="Contact details">
-          <p class="aside-label">A little context</p>
-          <dl class="profile-list">
-            <div>
-              <dt>Based in</dt>
-              <dd>Kigali, Rwanda</dd>
-            </div>
-            <div>
-              <dt>Focus</dt>
-              <dd>Backend systems<br />APIs &amp; infrastructure</dd>
-            </div>
-            <div>
-              <dt>Contact</dt>
-              <dd><a href="mailto:kwizeramugishaolivier0@gmail.com">Send an email <span aria-hidden="true">↗</span></a></dd>
-            </div>
-            <div>
-              <dt>Code</dt>
-              <dd><a href="https://github.com/oliviermugishak" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a></dd>
-            </div>
-          </dl>
-        </aside>
-        <div class="hero-index" aria-hidden="true"><span>01</span> / 03</div>
-      </section>
-
-      <section class="content-section page-shell" aria-labelledby="projects-title">
-        <div class="section-heading">
-          <p class="section-index">01 <span>/</span> Selected work</p>
-          <h2 id="projects-title">Projects</h2>
-          <p class="section-note">A closer look at the systems I’ve been building.</p>
-        </div>
-
-        <div class="project-list">
-          <article class="project-row">
-            <p class="project-number" aria-label="Project 1">01</p>
-            <div class="project-copy">
-              <div class="project-title-line">
-                <h3>Phantom</h3>
-                <span class="project-status"><span class="status-dot" aria-hidden="true"></span> Open source · MIT</span>
-              </div>
-              <p>A Rust/Linux utility that maps keyboard and mouse input to Android touch events in Waydroid. A Linux host daemon captures input, JSON profiles define the controls, and an Android-side service injects the events.</p>
-              <p class="project-contribution"><span>Contribution</span> Author</p>
-            </div>
-            <div class="project-meta">
-              <p>Rust · Linux · Waydroid</p>
-              <a class="repo-link" href="https://github.com/oliviermugishak/phantom" target="_blank" rel="noopener noreferrer">View repository <span aria-hidden="true">↗</span></a>
-            </div>
-          </article>
-
-          <article class="project-row">
-            <p class="project-number" aria-label="Project 2">02</p>
-            <div class="project-copy">
-              <div class="project-title-line">
-                <h3>Tuma Delivery System</h3>
-                <span class="project-status">In development · V0 skeletons</span>
-              </div>
-              <p>A delivery-system monorepo with a Rust/Axum server, PostgreSQL setup, Flutter customer app, web platform, and product and engineering documentation. The README labels the server and customer app as V0 skeletons.</p>
-            </div>
-            <div class="project-meta">
-              <p>Rust · Axum · PostgreSQL · Flutter</p>
-              <a class="repo-link" href="https://github.com/oliviermugishak/tuma-delivery-system" target="_blank" rel="noopener noreferrer">View repository <span aria-hidden="true">↗</span></a>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <section class="skills-band" aria-labelledby="skills-title">
-        <div class="page-shell skills-inner">
-          <div>
-            <p class="section-index">02 <span>/</span> Selected skills</p>
-            <h2 id="skills-title">Tools I work with</h2>
-          </div>
-          <p class="skills-line">Rust <span>·</span> Go <span>·</span> Python <span>·</span> TypeScript <span>·</span> SQL <span>·</span> REST APIs <span>·</span> PostgreSQL <span>·</span> Linux <span>·</span> Docker <span>·</span> CI/CD</p>
-        </div>
-      </section>
-
-      <section class="contact-section page-shell" aria-labelledby="contact-title">
-        <p class="section-index">03 <span>/</span> Get in touch</p>
-        <div class="contact-bottom">
-          <h2 id="contact-title">Have a role or<br />project in mind?</h2>
-          <a class="contact-email" href="mailto:kwizeramugishaolivier0@gmail.com">kwizeramugishaolivier0@gmail.com <span aria-hidden="true">↗</span></a>
-        </div>
-      </section>
-    </main>
-
-    <footer class="site-footer page-shell">
-      <span>Olivier Mugisha Kwizera <span class="brand-period">·</span> Kigali, Rwanda</span>
-      <div class="footer-links">
-        <a href="https://github.com/oliviermugishak" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
-        <a href="mailto:kwizeramugishaolivier0@gmail.com">Email <span aria-hidden="true">↗</span></a>
-      </div>
-    </footer>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

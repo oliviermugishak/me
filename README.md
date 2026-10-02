@@ -1,6 +1,6 @@
 # Olivier Mugisha Kwizera — Portfolio
 
-A minimal, responsive portfolio and HTML resume for Olivier Mugisha Kwizera, a freelance software engineer in Kigali, Rwanda.
+A responsive, three-page portfolio and HTML resume built with React and Vite.
 
 ## Pages
 
@@ -8,15 +8,25 @@ A minimal, responsive portfolio and HTML resume for Olivier Mugisha Kwizera, a f
 - `about.html` — Background and engineering interests
 - `resume.html` — Experience, projects, selected skills, and languages, with print styling
 
-## Preview locally
+Each HTML file is a Vite entry point. Typed React page components live in `src/App.tsx`, the React entry point is `src/main.tsx`, and global styles live in `src/styles.css`.
 
-This is a static site with no build step or package installation required. From the project directory, run:
+## Run locally
+
+Install dependencies, then start the development server:
 
 ```sh
-python3 -m http.server 8000
+npm install
+npm run dev
 ```
 
-Then open <http://localhost:8000> in a browser.
+Create and preview a production build:
+
+```sh
+npm run build
+npm run preview
+```
+
+Use Node.js 20.19+ or 22.12+. `npm run build` runs the TypeScript checker before creating the production build.
 
 The site uses DM Serif Display, DM Sans, and DM Mono when Google Fonts is reachable, with local system font fallbacks.
 
