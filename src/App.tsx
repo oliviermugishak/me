@@ -1,32 +1,55 @@
-import type { ComponentType, ReactNode } from "react";
-
-type SitePage = "home" | "about" | "resume";
+import { useEffect, type ReactNode } from "react";
+import { Link, NavLink, Outlet, Route, Routes } from "react-router";
 
 const email = "kwizeramugishaolivier0@gmail.com";
 const github = "https://github.com/oliviermugishak";
 
-function Header({ activePage }: { activePage: SitePage }) {
-  const navItems: { label: string; href: string; page: SitePage }[] = [
-    { label: "Home", href: "/", page: "home" },
-    { label: "About", href: "/about.html", page: "about" },
-    { label: "Resume", href: "/resume.html", page: "resume" },
+type PageMetadata = {
+  title: string;
+  description: string;
+  socialDescription: string;
+};
+
+function usePageMetadata({ title, description, socialDescription }: PageMetadata) {
+  useEffect(() => {
+    document.title = title;
+
+    const metadata = [
+      { selector: 'meta[name="description"]', content: description },
+      { selector: 'meta[property="og:title"]', content: title },
+      { selector: 'meta[property="og:description"]', content: socialDescription },
+      { selector: 'meta[name="twitter:title"]', content: title },
+      { selector: 'meta[name="twitter:description"]', content: socialDescription },
+    ];
+
+    for (const { selector, content } of metadata) {
+      document.querySelector<HTMLMetaElement>(selector)?.setAttribute("content", content);
+    }
+  }, [title, description, socialDescription]);
+}
+
+function Header() {
+  const navItems = [
+    { label: "Home", to: "/", end: true },
+    { label: "About", to: "/about" },
+    { label: "Resume", to: "/resume" },
   ];
 
   return (
     <header className="site-header">
       <div className="header-inner">
-        <a className="brand" href="/" aria-label="Olivier Mugisha Kwizera, home">
+        <Link className="brand" to="/" aria-label="Olivier Mugisha Kwizera, home">
           <span>OMK</span><span className="brand-period">.</span>
-        </a>
+        </Link>
         <nav aria-label="Main navigation">
           {navItems.map((item) => (
-            <a
-              key={item.page}
-              href={item.href}
-              aria-current={activePage === item.page ? "page" : undefined}
+            <NavLink
+              key={item.to}
+              to={item.to}
+              end={item.end}
             >
               {item.label}
-            </a>
+            </NavLink>
           ))}
         </nav>
       </div>
@@ -46,12 +69,12 @@ function Footer() {
   );
 }
 
-function SiteLayout({ activePage, children }: { activePage: SitePage; children: ReactNode }) {
+function SiteLayout() {
   return (
     <>
       <a className="skip-link" href="#main">Skip to content</a>
-      <Header activePage={activePage} />
-      {children}
+      <Header />
+      <Outlet />
       <Footer />
     </>
   );
@@ -71,6 +94,12 @@ function Eyebrow({ children }: { children: ReactNode }) {
 }
 
 function HomePage() {
+  usePageMetadata({
+    title: "Olivier Mugisha Kwizera — Software Engineer",
+    description: "Olivier Mugisha Kwizera is a freelance software engineer in Kigali focused on backend systems, APIs, and infrastructure.",
+    socialDescription: "Backend systems, APIs, and infrastructure. Based in Kigali, Rwanda.",
+  });
+
   return (
     <main id="main">
       <section className="home-hero page-shell" aria-labelledby="hero-title">
@@ -83,7 +112,7 @@ function HomePage() {
           <p className="hero-role">Backend systems, APIs &amp; infrastructure.</p>
           <p className="hero-intro">I freelance in Kigali, building backend and full-stack applications for client work and personal products. My work spans API design, access control, relational databases, Linux, containers, and deployment workflows.</p>
           <div className="hero-actions">
-            <a className="button-link" href="/resume.html">Read my resume <span aria-hidden="true">↗</span></a>
+            <Link className="button-link" to="/resume">Read my resume <span aria-hidden="true">↗</span></Link>
             <a className="underlined-link" href={`mailto:${email}`}>Email me</a>
           </div>
         </div>
@@ -160,6 +189,12 @@ function HomePage() {
 }
 
 function AboutPage() {
+  usePageMetadata({
+    title: "About — Olivier Mugisha Kwizera",
+    description: "Learn about Olivier Mugisha Kwizera's freelance software engineering work in Kigali and his focus on backend systems, APIs, and infrastructure.",
+    socialDescription: "Freelance software engineer in Kigali, Rwanda, focused on backend systems, APIs, and infrastructure.",
+  });
+
   return (
     <main id="main" className="page-shell inner-page">
       <div className="inner-heading">
@@ -174,7 +209,7 @@ function AboutPage() {
           <p>Alongside freelance work, I’m the author of <a href="https://github.com/oliviermugishak/phantom" target="_blank" rel="noopener noreferrer">Phantom</a>, an open-source Rust/Linux utility for mapping keyboard and mouse input to Android touch events in Waydroid. It connects Linux input capture and profile-based controls to an Android-side event injector.</p>
           <p>I’m interested in the engineering behind software: clear APIs, reliable access rules, data that stays structured, and systems that connect across operating environments.</p>
           <div className="about-actions">
-            <a className="button-link" href="/resume.html">Read my resume <span aria-hidden="true">↗</span></a>
+            <Link className="button-link" to="/resume">Read my resume <span aria-hidden="true">↗</span></Link>
             <a className="underlined-link" href={`mailto:${email}`}>Get in touch</a>
           </div>
         </div>
@@ -230,6 +265,12 @@ function EntryHeading({
 }
 
 function ResumePage() {
+  usePageMetadata({
+    title: "Resume — Olivier Mugisha Kwizera",
+    description: "Read Olivier Mugisha Kwizera's software engineering resume, including freelance experience, selected projects, skills, and languages.",
+    socialDescription: "Freelance software engineer focused on backend, data, and infrastructure work.",
+  });
+
   return (
     <main id="main" className="page-shell inner-page resume-main">
       <div className="resume-topline">
@@ -284,18 +325,34 @@ function ResumePage() {
   );
 }
 
-const pages: Record<SitePage, ComponentType> = {
-  home: HomePage,
-  about: AboutPage,
-  resume: ResumePage,
-};
-
-export default function App({ page }: { page: SitePage }) {
-  const Page = pages[page];
+function NotFoundPage() {
+  usePageMetadata({
+    title: "Page not found — Olivier Mugisha Kwizera",
+    description: "The requested page could not be found.",
+    socialDescription: "The requested page could not be found.",
+  });
 
   return (
-    <SiteLayout activePage={page}>
-      <Page />
-    </SiteLayout>
+    <main id="main" className="page-shell inner-page">
+      <div className="inner-heading">
+        <Eyebrow>Not found</Eyebrow>
+        <h1>404<span className="name-period">.</span></h1>
+        <p className="inner-deck">That page doesn’t exist.</p>
+        <p><Link className="underlined-link" to="/">Return home</Link></p>
+      </div>
+    </main>
+  );
+}
+
+export default function App() {
+  return (
+    <Routes>
+      <Route element={<SiteLayout />}>
+        <Route index element={<HomePage />} />
+        <Route path="about" element={<AboutPage />} />
+        <Route path="resume" element={<ResumePage />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Route>
+    </Routes>
   );
 }
