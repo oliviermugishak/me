@@ -8,7 +8,7 @@ A responsive portfolio built with React, TypeScript, Vite, and React Router.
 - `/about` — Background and engineering interests
 - `/resume` — Experience, projects, selected skills, and languages, with print styling
 
-Typed React page components live in `src/App.tsx`. React Router handles client-side navigation, and `index.html` is the single HTML entry point.
+Each route has its own typed page component in `src/page/` (`home.tsx`, `about.tsx`, `resume.tsx`, and `not-found.tsx`). Shared UI components live in `src/components/`, while `src/App.tsx` defines the React Router routes. `index.html` is the single HTML entry point.
 
 ## Run locally
 
